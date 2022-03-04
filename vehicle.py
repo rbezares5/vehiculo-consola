@@ -2,6 +2,7 @@ from blinker import *
 from engine import *
 from fuel import *
 from environment import *
+from light import *
 
 class Vehicle:
     def __init__(self):
@@ -10,9 +11,10 @@ class Vehicle:
         self.engine = Engine()
         self.fuel = Fuel(self.engine)
         self.environment = Environment()
+        self.light = Light(self.environment)
 
     def __str__(self):
-        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + ' ' + str(self.engine) + ' ' + str(self.fuel) + ' ' + str(self.environment.lum)
+        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + ' ' + str(self.engine) + ' ' + str(self.fuel) + ' ' + str(self.environment.lum) + ' ' + str(self.light)
         return status
 
 
@@ -42,7 +44,7 @@ class Vehicle:
             if key == 'q':
                 exit()
             
-            #self.light.update()
+            self.light.update()
             self.fuel.update()
 
             if self.fuel.level < 0:
