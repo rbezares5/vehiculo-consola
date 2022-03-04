@@ -6,6 +6,9 @@ class Engine:
     def modify_rpm(self, value):
         self.rpm += value
 
+        if self.rpm < 0:
+            self.rpm=0
+
     def modify_gear(self, value):
         self.gear += value
 
