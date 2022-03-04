@@ -1,14 +1,16 @@
 from blinker import *
 from engine import *
+from fuel import *
 
 class Vehicle:
     def __init__(self):
         self.blinker_front = Blinker(BLINKER_FRONT)
         self.blinker_rear = Blinker(BLINKER_REAR)
         self.engine = Engine()
+        self.fuel = Fuel(self.engine)
 
     def __str__(self):
-        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + ' ' + str(self.engine)
+        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + ' ' + str(self.engine) + ' ' + str(self.fuel)
         return status
 
 
@@ -39,7 +41,10 @@ class Vehicle:
                 exit()
             
             #self.light.update()
-            #self.fuel.update()
+            self.fuel.update()
+
+            if self.fuel.level < 0:
+                exit('Ran out of fuel')
 
 
 if __name__ == "__main__":
