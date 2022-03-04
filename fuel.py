@@ -1,6 +1,6 @@
 class Fuel:
     def __init__(self,engine):
-        self.level = 10
+        self.level = 1000
         self.engine = engine
 
     def update(self):
