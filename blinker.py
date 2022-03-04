@@ -17,8 +17,10 @@ class Blinker:
         return self.activated
 
     def change(self):
-        #TODO
-        pass
+        if self.activated:
+            self.activated=False
+        else:
+            self.activated=True
 
     def __str__(self):
         if self.activated:
