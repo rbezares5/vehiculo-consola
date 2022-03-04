@@ -1,6 +1,7 @@
 from blinker import *
 from engine import *
 from fuel import *
+from environment import *
 
 class Vehicle:
     def __init__(self):
@@ -8,9 +9,10 @@ class Vehicle:
         self.blinker_rear = Blinker(BLINKER_REAR)
         self.engine = Engine()
         self.fuel = Fuel(self.engine)
+        self.environment = Environment()
 
     def __str__(self):
-        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + ' ' + str(self.engine) + ' ' + str(self.fuel)
+        status = str(self.blinker_front) + ' ' + str(self.blinker_rear) + ' ' + str(self.engine) + ' ' + str(self.fuel) + ' ' + str(self.environment.lum)
         return status
 
 
@@ -32,10 +34,10 @@ class Vehicle:
                 self.engine.modify_gear(1)
             if key == 'd':
                 self.engine.modify_gear(-1)
-            #if key == 'r':
-            #    self.environment.modify_lum(10)
-            #if key == 'f':
-            #    self.environment.modify_lum(-10)
+            if key == 'r':
+                self.environment.modify_lum(10)
+            if key == 'f':
+                self.environment.modify_lum(-10)
 
             if key == 'q':
                 exit()
